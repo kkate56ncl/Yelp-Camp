@@ -4,13 +4,15 @@ const Review = require("../models/review");
 const cities = require("./cities");
 const { places, descriptors } = require("./seedHelps");
 
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
+
 main().catch((err) => {
   console.log("Connection Error");
   console.log(err);
 });
 
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/yelp-camp");
+  await mongoose.connect(dbUrl);
   console.log("YelpCamp Database Connected!");
 }
 //https://api.unsplash.com/photos/random?client_id=7Lz2WcKlAW__i4ByrucOV7PyWpZ0IsC_Str7C2et2hc
