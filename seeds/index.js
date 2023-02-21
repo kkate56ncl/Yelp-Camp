@@ -19,23 +19,6 @@ async function main() {
   await mongoose.connect(dbUrl);
   console.log("YelpCamp Database Connected!");
 }
-//https://api.unsplash.com/photos/random?client_id=7Lz2WcKlAW__i4ByrucOV7PyWpZ0IsC_Str7C2et2hc
-//UNSPLASH API: (not working yet!!!)
-// const clientId = "7Lz2WcKlAW__i4ByrucOV7PyWpZ0IsC_Str7C2et2hc";
-
-// const seedImg = async () => {
-//   try {
-//     const res = await axios.get("https://api.unsplash.com/photos/random/", {
-//       params: {
-//         client_id: clientId,
-//         collection: 1114848,
-//       },
-//     });
-//     return res.data.urls.small;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 const sampleSelect = (array) => array[Math.floor(Math.random() * array.length)];
 
@@ -43,7 +26,7 @@ const seedDB = async () => {
   await Campground.deleteMany({});
   await Review.deleteMany({});
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 300; i++) {
     const random1000 = Math.floor(Math.random() * 1000);
     const price = Math.floor(Math.random() * 20) + 10;
     const camp = new Campground({
